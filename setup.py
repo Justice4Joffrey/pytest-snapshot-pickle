@@ -21,7 +21,7 @@ setup(
     url='https://github.com/Justice4Joffrey/pytest-snapshot-pickle.git',
     description='A plugin to enable snapshot testing with pytest.',
     long_description=read('README.rst'),
-    packages=['pytest_snapshot-pickle'],
+    packages=['pytest_snapshot_pickle'],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
     install_requires=[
         'packaging',
