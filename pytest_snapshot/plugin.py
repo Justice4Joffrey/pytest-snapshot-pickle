@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import pickle
 import re
 import sys
 
@@ -126,13 +127,11 @@ class Snapshot(object):
         :type value: str
         :type snapshot_name: str or Path
         """
-        if not isinstance(value, text_type):
-            raise TypeError('value must be {}'.format(text_type.__name__))
-
         snapshot_path = self._snapshot_path(snapshot_name)
 
         if snapshot_path.is_file():
-            expected_value = snapshot_path.read_text()
+            with open(str(snapshot_path), "rb") as f:
+                expected_value = pickle.load(f)
         elif snapshot_path.exists():
             raise AssertionError('snapshot exists but is not a file: {}'.format(shorten_path(snapshot_path)))
         else:
@@ -142,10 +141,12 @@ class Snapshot(object):
             snapshot_path.parent.mkdir(parents=True, exist_ok=True)
             if expected_value is not None:
                 if expected_value != value:
-                    snapshot_path.write_text(value)
+                    with open(str(snapshot_path), "wb") as f:
+                        pickle.dump(value, f)
                     self._updated_snapshots.append(snapshot_path)
             else:
-                snapshot_path.write_text(value)
+                with open(str(snapshot_path), "wb+") as f:
+                    pickle.dump(value, f)
                 self._created_snapshots.append(snapshot_path)
         else:
             if expected_value is not None:
