@@ -18,7 +18,7 @@ setup(
     maintainer='Joseph Roitman',
     maintainer_email='joseph.roitman@gmail.com',
     license='MIT',
-    url='https://github.com/joseph-roitman/pytest-snapshot',
+    url='https://github.com/Justice4Joffrey/pytest-snapshot-pickle.git',
     description='A plugin to enable snapshot testing with pytest.',
     long_description=read('README.rst'),
     packages=['pytest_snapshot-pickle'],
@@ -49,9 +49,9 @@ setup(
     ],
     entry_points={
         'pytest11': [
-            'snapshot = pytest_snapshot.plugin',
+            'snapshot = pytest_snapshot_pickle.plugin',
         ],
     },
-    use_scm_version={"write_to": "pytest_snapshot/_version.py"},
+    use_scm_version={"write_to": "pytest_snapshot_pickle/_version.py"},
     setup_requires=["setuptools-scm", "setuptools>=40.0", "wheel"],
 )
