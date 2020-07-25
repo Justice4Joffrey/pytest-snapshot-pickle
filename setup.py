@@ -12,7 +12,7 @@ def read(fname):
 
 
 setup(
-    name='pytest-snapshot',
+    name='pytest-snapshot-pickle',
     author='Joseph Roitman',
     author_email='joseph.roitman@gmail.com',
     maintainer='Joseph Roitman',
@@ -21,7 +21,7 @@ setup(
     url='https://github.com/joseph-roitman/pytest-snapshot',
     description='A plugin to enable snapshot testing with pytest.',
     long_description=read('README.rst'),
-    packages=['pytest_snapshot'],
+    packages=['pytest_snapshot-pickle'],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
     install_requires=[
         'packaging',
